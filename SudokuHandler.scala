@@ -1,8 +1,6 @@
 import java.io.PrintWriter
 
-class Sudoku extends FileIO {
-  val sudoku: Array[Array[Int]] = Array.ofDim(9, 9)
-
+class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
   def solve() = 
     println("TODO: Implement")
 
@@ -27,13 +25,6 @@ class Sudoku extends FileIO {
       close
     }
   }
-
-  override def toString(): String = {
-    sudoku.map(rowToString).mkString("\n")
-  }
-
-  private def rowToString(row: Array[Int]) =
-    row.map(x => x.toString).mkString(" ")
 
   private def toListOfInts(s: String) =
     s.split(" +").map(x => x.toInt)
