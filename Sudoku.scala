@@ -1,7 +1,10 @@
 import java.io.PrintWriter
 
-class Sudoku extends FileReader with FileWriter {
+class Sudoku extends FileIO {
   val sudoku: Array[Array[Int]] = Array.ofDim(9, 9)
+
+  def solve() = 
+    println("TODO: Implement")
 
   def readFromFile(filename: String) = {
     val lines = io.Source.fromFile(filename).mkString.split("\n")

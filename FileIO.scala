@@ -1,7 +1,4 @@
-trait FileReader {
+trait FileIO {
   def readFromFile(filename: String): Unit
-}
-
-trait FileWriter {
   def writeToFile(filename: String): Unit
 }
