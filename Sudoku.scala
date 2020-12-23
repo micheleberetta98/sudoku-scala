@@ -1,14 +1,18 @@
 class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
+  private val rows = 0 until 9
+  private val cols = 0 until 9
+  private val values = 1 until 10
+
   def solve(): Boolean = {
-    for (i <- 0 until 9)
-      for (j <- 0 until 9)
+    for (i <- rows)
+      for (j <- cols)
         if (sudoku(i)(j) == 0)
           return tryAllNumbers(i, j)
     return isOk()
   }
 
   private def tryAllNumbers(i: Int, j: Int): Boolean = {
-    for (n <- 1 until 10)
+    for (n <- values)
       if (isPossible(i, j, n)) {
         sudoku(i)(j) = n
         if (solve())
@@ -19,8 +23,8 @@ class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
   }
 
   private def isOk(): Boolean = {
-    for (i <- 0 until 9)
-      for (j <- 0 until 9)
+    for (i <- rows)
+      for (j <- cols)
         if (!isPossible(i, j, sudoku(i)(j)))
           return false
     true
@@ -30,14 +34,14 @@ class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
     !(isInRow(x, y, n) || isInCol(x, y, n) || isInSquare(x, y, n))
 
   private def isInRow(x: Int, y: Int, n: Int): Boolean = {
-    for (j <- 0 until 9)
+    for (j <- cols)
       if (j != y && sudoku(x)(j) == n)
         return true
     false
   }
 
   private def isInCol(x: Int, y: Int, n: Int): Boolean = {
-    for (i <- 0 until 9)
+    for (i <- rows)
       if (i != x && sudoku(i)(y) == n)
         return true
     false
@@ -74,10 +78,12 @@ class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
     ).mkString("\n")
   }
 
-  private def rowToPrettyString(row: Array[Int]) =
+  private def rowToPrettyString(row: Array[Int]) = {
+    val separator = List(" ", Borders.vertical, " ").mkString
     List(
       Borders.vertical,
-      row.grouped(3).map(rowToString).mkString(" " + Borders.vertical + " "),
+      row.grouped(3).map(rowToString).mkString(separator),
       Borders.vertical
     ).mkString(" ")
+  }
 }
