@@ -2,9 +2,15 @@ package sudoku
 
 import java.io.PrintWriter
 import fileio._
-
+import exceptions._
 class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
-  def readFromFile(filename: String) = {
+  def trySolve() = {
+    val ok = solve()
+    if (!ok)
+      throw new UnsolvableSudokuException()
+  }
+
+  override def readFromFile(filename: String) = {
     val lines = io.Source.fromFile(filename).mkString.split("\n")
     var row = 0
     var col = 0
@@ -18,7 +24,7 @@ class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
     }
   }
   
-  def writeToFile(filename: String) = {
+  override def writeToFile(filename: String) = {
     val output = toString
     new PrintWriter(filename) {
       write(output)

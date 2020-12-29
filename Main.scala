@@ -1,4 +1,5 @@
 import sudoku.SudokuHandler
+import exceptions._
 
 object Main {
   def main(args: Array[String]) = {
@@ -20,16 +21,16 @@ object Main {
     val sudoku = new SudokuHandler()
 
     sudoku.readFromFile(input)
-    val solved = sudoku.solve()
-    if (solved) {
+    try {
+      sudoku.trySolve()
       println("The sudoku was solved!")
       println(sudoku.toPrettyString())
       output match {
         case Some(file) => sudoku.writeToFile(file)
         case None       => ()
       }
-    } else {
-      println("The sudoku is unsolvable")
+    } catch {
+      case e: UnsolvableSudokuException => println("The sudoku is unsolvable")
     }
   }
 }
