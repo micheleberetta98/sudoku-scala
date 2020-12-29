@@ -12,7 +12,7 @@ You will need Scala installed on your system:
 
 When you can access both `scalac` and `scala` from the command line, just do
 ```
-scalac *.scala
+scalac *.scala fileio/*.scala pretty/*.scala sudoku/*scala
 scala Main inputFile
 ```
 And it will compile and execute.
@@ -39,3 +39,11 @@ An example of an input file can be
 7 6 3 4 1 8 2 5 9
 ```
 
+## If you use Eclipse
+
+If you want to use Eclipse, make sure that:
+1. Your text file encoding is UTF-8. You can check under `Window > Preferences > General > Workspace`.
+   Otherwise characters like those in `pretty/Borders.scala` will not show properly.
+2. You pass the CLI argument to the executable. You can check by right-clicking the project, then selecting
+   `Run As > Run Configurations...`. In the newly opened window there's an "Arguments" tab, an there will be a textfield where you can enter the paths to the input file (and output file if you need it).
+   The path is relative to the working directory shown in the window.
