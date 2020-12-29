@@ -12,7 +12,7 @@ You will need Scala installed on your system:
 
 When you can access both `scalac` and `scala` from the command line, just do
 ```
-scalac *.scala fileio/*.scala pretty/*.scala sudoku/*scala
+scalac *.scala exceptions/*.scala fileio/*.scala pretty/*.scala sudoku/*scala
 scala Main inputFile
 ```
 And it will compile and execute.
