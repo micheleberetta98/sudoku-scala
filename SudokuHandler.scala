@@ -24,5 +24,5 @@ class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
   }
 
   private def toListOfInts(s: String) =
-    s.split(" +").map(x => x.toInt)
+    s.filter(_ >= ' ').split(" +").map(x => x.toInt)
 }
