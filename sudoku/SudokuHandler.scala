@@ -1,4 +1,7 @@
+package sudoku
+
 import java.io.PrintWriter
+import fileio._
 
 class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
   def readFromFile(filename: String) = {

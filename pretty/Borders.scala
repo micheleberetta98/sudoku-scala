@@ -1,3 +1,5 @@
+package pretty
+
 object Borders {
   val horizontal = "─"
   val topMid = "┬"

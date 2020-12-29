@@ -1,3 +1,7 @@
+package sudoku 
+
+import pretty._
+
 class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
   private val rows = 0 until 9
   private val cols = 0 until 9

@@ -1,3 +1,5 @@
+import sudoku.SudokuHandler
+
 object Main {
   def main(args: Array[String]) = {
     if (validateArgs(args)) {
