@@ -3,6 +3,9 @@ package sudoku
 import java.io.PrintWriter
 import fileio._
 import exceptions._
+
+// SudokuHandler estende Sudoku con il trait FileIO
+// per la lettura/scrittura su file
 class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
   def trySolve() = {
     val ok = solve()

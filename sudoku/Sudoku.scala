@@ -2,20 +2,29 @@ package sudoku
 
 import pretty._
 
+// Sudoku gestisce la risoluzione del sudoku ed il suo pretty-printing
 class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
   private val rows = 0 until 9
   private val cols = 0 until 9
   private val values = 1 until 10
 
   def solve(): Boolean = {
+    // Una volta trovato il primo posto libero (indicato con 0)
+    // si tentano tutti i numeri
     for (i <- rows)
       for (j <- cols)
         if (sudoku(i)(j) == 0)
           return tryAllNumbers(i, j)
+    
+    // Se tutte le celle sono piene bisogna controllare la validità
+    // del sudoku nella sua interezza
     return isOk()
   }
 
   private def tryAllNumbers(i: Int, j: Int): Boolean = {
+    // Per ogni numero (da 1 a 9), se questo può essere inserito
+    // allora si mette e si tenta di risolvere il sudoku ricorsivamente
+    // Se non è risolvibile allora si libera il posto e si va avanti
     for (n <- values)
       if (isPossible(i, j, n)) {
         sudoku(i)(j) = n
@@ -23,6 +32,8 @@ class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
           return true
         sudoku(i)(j) = 0
       }
+    
+    // Nessun numero va bene: il sudoku non è risolvibile (in questo stato)
     return false
   }
 
