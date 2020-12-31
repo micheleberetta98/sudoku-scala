@@ -2,18 +2,6 @@ package pretty
 
 // Singleton di utilità per il pretty printing
 object Borders {
-  val horizontal = "─"
-  val topMid = "┬"
-  val topLeft = "┌"
-  val topRight = "┐"
-  val bottomMid = "┴"
-  val bottomLeft = "└"
-  val bottomRight = "┘"
-  val vertical = "│"
-  val leftMid = "├"
-  val midMid = "┼"
-  val rightMid = "┤"
-
   // Crea un bordo orizzontale con i necessari separatori
   // sections indica quante sezioni sono da fare
   // elsPerSection indica il numero di elementi per sezione

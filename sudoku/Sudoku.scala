@@ -96,9 +96,9 @@ class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
   private def rowToPrettyString(row: Array[Int]) = {
     val separator = s" ${Separators.Vertical} "
     List(
-      Borders.vertical,
+      Separators.Vertical,
       row.grouped(3).map(rowToString).mkString(separator),
-      Borders.vertical
+      Separators.Vertical
     ).mkString(" ")
   }
 }
