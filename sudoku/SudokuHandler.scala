@@ -7,7 +7,7 @@ class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
   def trySolve() = {
     val ok = solve()
     if (!ok)
-      throw new UnsolvableSudokuException()
+      throw UnsolvableSudokuException()
   }
 
   override def readFromFile(filename: String) = {
