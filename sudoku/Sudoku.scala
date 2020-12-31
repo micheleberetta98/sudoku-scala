@@ -73,9 +73,9 @@ class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
   }
 
   override def toString() =
-    sudoku.map(rowToString).mkString("\n")
+    sudoku.map(toString).mkString("\n")
 
-  private def rowToString(row: Array[Int]) =
+  private def toString(row: Array[Int]) =
     row.map(x => x.toString).mkString(" ")
 
   def toPrettyString() = {
@@ -97,7 +97,7 @@ class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
     val separator = s" ${Separators.Vertical} "
     List(
       Separators.Vertical,
-      row.grouped(3).map(rowToString).mkString(separator),
+      row.grouped(3).map(toString).mkString(separator),
       Separators.Vertical
     ).mkString(" ")
   }
