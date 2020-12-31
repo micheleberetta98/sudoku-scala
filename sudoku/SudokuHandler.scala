@@ -17,14 +17,14 @@ class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
     val lines = io.Source.fromFile(filename).mkString.split("\n")
     var row = 0
     var col = 0
-    for (line <- lines) {
+    lines.foreach(line => {
       col = 0
       for (x <- toListOfInts(line)) {
         sudoku(row)(col) = x
         col += 1
       }
       row += 1
-    }
+    })
   }
   
   override def writeToFile(filename: String) = {
