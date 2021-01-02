@@ -3,7 +3,7 @@ package sudoku
 import pretty._
 
 // Sudoku gestisce la risoluzione del sudoku ed il suo pretty-printing
-class Sudoku(var sudoku: Array[Array[Int]]) extends Prettifiable {
+class Sudoku(val sudoku: Array[Array[Int]]) extends Prettifiable {
   private val rows = 0 until 9
   private val cols = 0 until 9
   private val values = 1 until 10
