@@ -20,8 +20,8 @@ object Main {
   def solveSudoku(input: String, output: Option[String]) = {
     val sudoku = new SudokuHandler()
 
-    sudoku.readFromFile(input)
     try {
+      sudoku.readFromFile(input)
       sudoku.trySolve()
       println("The sudoku was solved!")
       println(sudoku.toPrettyString())
@@ -30,7 +30,8 @@ object Main {
         case None       => ()
       }
     } catch {
-      case e: UnsolvableSudokuException => println("The sudoku is unsolvable")
+      case e: UnsolvableSudokuException  => println("The sudoku is unsolvable")
+      case e: InvalidSudokuFileException => println("The sudoku file is wrongly formatted")
     }
   }
 }

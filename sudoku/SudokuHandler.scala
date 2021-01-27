@@ -15,11 +15,21 @@ class SudokuHandler extends Sudoku(Array.ofDim(9, 9)) with FileIO {
 
   override def readFromFile(filename: String) = {
     val lines = io.Source.fromFile(filename).mkString.split("\n")
+    if (lines.length != 9) {
+      throw InvalidSudokuFileException()
+    }
+
     var row = 0
     var col = 0
+    
     lines.foreach(line => {
       col = 0
-      for (x <- toListOfInts(line)) {
+      val nums = toListOfInts(line)
+      if (nums.length != 9) {
+        throw InvalidSudokuFileException()
+      }
+
+      for (x <- nums) {
         sudoku(row)(col) = x
         col += 1
       }
